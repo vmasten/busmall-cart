@@ -44,10 +44,21 @@ function addSelectedItemToCart() {
   }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  var itemCount = document.getElementById("itemCount");
+  var count = cart.items.length;
+  itemCount.textContent = ' (' + count + ')';
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+  var itemIndex = document.getElementById("items").selectedIndex;
+  var appendEl = document.getElementById("cartContents");
+  var appendNode = document.createElement('li');
+  var itemToAppend = Product.allProducts[itemIndex].name;
+  var itemQuantity = event.target.quantity.value;
+  appendNode.textContent = itemToAppend + ' : ' + itemQuantity;
+  appendEl.appendChild(appendNode); 
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }
